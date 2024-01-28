@@ -3,35 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pobierz Snake</title>
+    <title>Retro Games</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1000;
+            background-size: cover;
+            transition: 1s opacity;
+            opacity: 60%;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: rgb(0, 0, 0);
+            text-shadow: 1px 1px 2px red, 0 0 1em rgb(124, 124, 164), 0 0 0.2em rgb(139, 139, 180);
         }
         button {
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: #4CAF50;
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #3a6e3b;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: solid black 1px;
         }
         button:hover {
             background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .download-button {
+            background-image: url('download.png');
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            background-position: right 10px center;
+            padding-right: 40px;
         }
     </style>
 </head>
 <body>
-    <button onclick="downloadSnake()">Pobierz grę Snake</button>
+    <video id="background-video" autoplay loop muted>
+        <source src="retro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <h1>Available Games</h1>
+
+    <button class="download-button" onclick="downloadSnake()">Download Snake</button>
 
     <script>
         function downloadSnake() {
-         
             var link = document.createElement('a');
             link.href = 'snake.exe';
             link.download = 'snake.exe';
